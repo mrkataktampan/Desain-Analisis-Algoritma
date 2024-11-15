@@ -1,2 +1,7 @@
-Pertemuan2/sampleapp/db/data/*
-Pertemuan2/sampleapp/src/*
+mariadb/
+mongo/
+postgres/
+redis/
+mysql/
+performance_schema/
+data/
