@@ -13,13 +13,10 @@ class BookSeeder extends Seeder
      */
     public function run(): void
     {
-        Book::create([
-            'title' => 'Bulan Kesatria',
-            'author' => 'John',
-            'rating' => '8',
-            'reviews' => 'lumayan asik',
-            'publication_year' => '2008',
-            'genre' => 'Action'
+        DB::table('books')->insert([
+            ['title' => 'One Piece', 'author' => 'Eiichiro Oda', 'publisher' => 'Shueisha', 'available' => true],
+            ['title' => 'Naruto', 'author' => 'Masashi Kishimoto', 'publisher' => 'Shueisha', 'available' => true],
+            ['title' => 'Fathul Muin', 'author' => 'Ahmad Zainudin Alfannani', 'publisher' => 'Pustaka Azzam', 'available' => true],
         ]);
     }
 }

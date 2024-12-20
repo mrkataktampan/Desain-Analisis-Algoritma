@@ -13,19 +13,28 @@ class RoleSeeder extends Seeder
     public function run(): void 
     {
         // Ensure roles exist
-        $mahasiswaRole = Role::firstOrCreate(['name' => 'User', 'guard_name' => 'web']);
+        $stafRole = Role::firstOrCreate(['name' => 'Staff', 'guard_name' => 'web']);
         $adminRole = Role::firstOrCreate(['name' => 'super_admin', 'guard_name' => 'web']);
         
         // Assign roles to specific users based on email
-        $userUser = User::where('email', 'user@admin.com')->first();
+        $stafUser = User::where('email', 'staf@admin.com')->first();
         $adminUser = User::where('email', 'admin@example.com')->first();
 
-        if ($userUser) {
-            $userUser->assignRole($userRole);
+        if ($stafUser) {
+            $stafUser->assignRole($stafRole);
         }
 
         if ($adminUser) {
             $adminUser->assignRole($adminRole);
         }
+
+        foreach ($staffPermissions as $permission) {
+            Permission::firstOrCreate(['name' => $permission]);
+        }
+
+        $staffRole = Role::firstOrCreate(['name' => 'Staff']);
+        
+        $staffRole->givePermissionTo($staffPermissions);
+
     }
 }
