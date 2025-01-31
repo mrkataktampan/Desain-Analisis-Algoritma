@@ -3,12 +3,15 @@
 namespace App\Filament\Admin\Resources;
 
 use App\Filament\Admin\Resources\UserResource\Pages;
+use App\Filament\Admin\Resources\UserResource\RelationManagers;
 use App\Models\User;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class UserResource extends Resource
 {
@@ -41,6 +44,8 @@ class UserResource extends Resource
                 Forms\Components\TextInput::make('theme_color')
                     ->maxLength(255)
                     ->default('blue'),
+                Forms\Components\TextInput::make('role')
+                    ->required(),
             ]);
     }
 
@@ -69,6 +74,7 @@ class UserResource extends Resource
                     ->searchable(),
                 Tables\Columns\TextColumn::make('theme_color')
                     ->searchable(),
+                Tables\Columns\TextColumn::make('role'),
             ])
             ->filters([
                 //
