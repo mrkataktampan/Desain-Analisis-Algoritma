@@ -1,0 +1,21 @@
+@startuml
+left to right direction
+
+actor User as "Pengguna"
+actor Admin as "Admin"
+
+rectangle "Forum Diskusi" {
+    usecase "Buat Thread" as UC1
+    usecase "Komentar pada Thread" as UC2
+    usecase "Voting pada Thread" as UC3
+    usecase "Kelola Pengguna" as UC4
+    usecase "Moderasi Thread dan Komentar" as UC5
+}
+
+User --> UC1 : "Menggunakan"
+User --> UC2 : "Menggunakan"
+User --> UC3 : "Menggunakan"
+Admin --> UC4 : "Mengelola"
+Admin --> UC5 : "Mengelola"
+
+@enduml
